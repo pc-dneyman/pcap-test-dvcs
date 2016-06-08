@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    <appender class="org.apache.log4j.RollingFileAppender" name="http">
+		<param value="test_httplogger.log"
+			name="File" />
+		<param name="MaxFileSize" value="20MB" />
+		<param name="MaxBackupIndex" value="20" />
+		<param name="append" value="true" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param value="%d %p %t [%c] - %m%n" name="ConversionPattern" />
+		</layout>
+	</appender>
+	<appender class="org.apache.log4j.RollingFileAppender"
+		name="main">
+		<param value="test_main.log" name="File" />
+	    <param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="append" value="true" />	
+		<layout class="org.apache.log4j.PatternLayout">
+			<param value="%d %p %t [%c] - %m%n" name="ConversionPattern" />
+		</layout>		
+	</appender>
+   	<appender class="org.apache.log4j.RollingFileAppender"
+		name="sql">
+		<param value="test_sql.log" name="File" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="append" value="true" />	
+		<layout class="org.apache.log4j.PatternLayout">
+			<param value="%d %p %t [%c] - %m%n" name="ConversionPattern" />
+		</layout>		
+	</appender>
+	  <appender class="org.apache.log4j.RollingFileAppender"
+		name="thirdparty">
+		<param value="test_thirdparty.log" name="File" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="append" value="true" />	
+		<layout class="org.apache.log4j.PatternLayout">
+			<param value="%d %p %t [%c] - %m%n" name="ConversionPattern" />
+		</layout>		
+	</appender>
+  	<appender class="org.apache.log4j.RollingFileAppender"
+		name="cache">
+		<param value="test_cache.log" name="File" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="append" value="true" />	
+		<layout class="org.apache.log4j.PatternLayout">
+			<param value="%d %p %t [%c] - %m%n" name="ConversionPattern" />
+		</layout>		
+	</appender>			
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param value="%d %p %t [%c] - %m%n" name="ConversionPattern" />
+		</layout>
+	</appender>
+	
+	<!-- Hibernate -->
+    <logger name="org.hibernate.SQL" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="console" />
+    </logger>  	
+    <logger name="org.hibernate" additivity="false"> 
+        <level value="INFO" /> 
+        <appender-ref ref="console" /> 
+    </logger>
+    <logger name="org.hibernate.cfg.AnnotationBinder" additivity="false"> 
+        <level value="INFO" /> 
+        <appender-ref ref="console" /> 
+    </logger>
+    <logger name="org.hibernate.cfg.annotations.EntityBinder" additivity="false"> 
+        <level value="INFO" /> 
+        <appender-ref ref="console" /> 
+    </logger>      
+    <!-- Mysql -->
+    <logger name="com.mysql" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="console" />
+    </logger>       
+    <logger name="com.mysql.etools" additivity="false">
+        <level value="WARN" />
+        <appender-ref ref="console" />
+    </logger>
+    <!-- Cache -->                 
+    <logger name="net.sf" additivity="false">
+        <level value="INFO" />
+        <appender-ref ref="console" />
+    </logger>  
+	<!-- Spring -->
+	<logger name="org.springframework" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="org.springframework.beans.factory.support.DefaultListableBeanFactory" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="org.springframework.beans.factory.annotation.InjectionMetadata" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="org.springframework.test.context.TestContextManager" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="org.springframework.test.context.support.DirtiesContextTestExecutionListener" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="org.springframework.aop" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="org.springframework.orm.jpa" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="console" />
+	</logger>
+	<logger name="org.springframework.test.annotation" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="console" />
+	</logger>
+	<!-- Other 3rd parties -->
+	<logger name="AXIS_SOAP_HANDLER" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="console" />
+	</logger>
+
+	<!-- Pcap -->
+	<logger name="com.personalcapital" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="main" />
+	</logger>
+	<logger name="com.safepage" additivity="false">
+		<level value="debug" />
+		<appender-ref ref="main" />
+	</logger>
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="main" />
+	</root>
+</log4j:configuration>
